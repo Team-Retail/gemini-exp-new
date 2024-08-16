@@ -20,8 +20,8 @@ type AssetType = {
 
 function App() {
   // const [isOpen, setIsOpen] = useState(false);
-  const [open, setOpen] = useState<boolean>(false);
-  const [isGreater, setIsGreater] = useState(false);
+  //const [open, setOpen] = useState<boolean>(false);
+  //const [isGreater, setIsGreater] = useState(false);
   const [loadedAssets, setLoadedAssets] = useState<AssetType>({});
   const isGreaterRef = useRef(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -104,11 +104,11 @@ function App() {
         }
 
         if (canvasRef.current.offsetWidth > 800 && !isGreaterRef.current) {
-          setIsGreater(true);
+          //setIsGreater(true);
           isGreaterRef.current = true;
         }
         if (canvasRef.current.offsetWidth < 800 && isGreaterRef.current) {
-          setIsGreater(false);
+          //setIsGreater(false);
           isGreaterRef.current = false;
         }
       } else if (retryCount < maxRetries) {

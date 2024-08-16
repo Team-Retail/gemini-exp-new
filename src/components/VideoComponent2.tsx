@@ -14,7 +14,7 @@ const VideoComponent2 = ({ src }) => {
   const [isVideoEnded2, setIsVideoEnded2] = useState(false);
   const [disclaimerShown, setDisclaimerShown] = useState(false);
 
-  const [isVideoEnded3, setIsVideoEnded3] = useState(false);
+  //const [isVideoEnded3, setIsVideoEnded3] = useState(false);
 
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const VideoComponent2 = ({ src }) => {
       videoRef3.current.play();
     }
     const handleVideoEnd = () => {
-      setIsVideoEnded3(true);
+      //setIsVideoEnded3(true);
       //   setThirdOverlay(false);
       //   setFourthOverlay(true);
     };
