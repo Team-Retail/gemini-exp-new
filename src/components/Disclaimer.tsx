@@ -88,7 +88,8 @@ export default function Disclaimer({ open, setOpen, isGreater }: DisclaimerProps
                 </div>
                 <div className={cn("mt-3 mb-2 text-xs text-white font-google-sans-regular", isGreater && "text-[2vw]")}>
                     <sup className="text-white">1</sup>
-                    Not available for all cameras, apps, or modes.
+                    1 Gemini mobile app available on select devices, languages, and countries. Internet connection required. Check responses for accuracy.
+                    2 Results for illustrative purposes. Check responses for accuracy. Available in select countries and languages.
                 </div>
             </div>
         </div>

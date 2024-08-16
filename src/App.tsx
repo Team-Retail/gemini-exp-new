@@ -165,16 +165,17 @@ function App() {
               className=" unity-canvas box-border relative max-w-full flex justify-center items-center overflow-hidden mx-auto aspect-ratio-16/9 h-[80vh] w-[36vh]"
               ref={canvasRef}
             >
+
               {/*{<LoadingScreen progress={progress * 100}/>}*/}
 
               <div className="w-full font-google-sans-regular unity-canvas bg-black h-full justify-between flex flex-col items-center  transition-opacity ease-in-out duration-500">
                 <div className="unity-canvas w-full h-full z-10 absolute text-white top-0 bottom-0 ">
                   <VideoComponent2 src={loadedAssets} />
-                </div>
-              </div>
+               </div>
+            </div>
             </div>
           </div>
-        ) : (
+        ) : ( 
           <></>
         )}
       </div>
