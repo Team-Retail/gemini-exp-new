@@ -19,7 +19,9 @@ const VideoComponent2 = ({ src }) => {
 
   useEffect(() => {
     const handleVideoEnd = () => {
-      setIsVideoEnded(true);
+      setTimeout(() => {
+        setIsVideoEnded(true);
+      }, 500);
     };
 
     const videoElement = videoRef.current;
