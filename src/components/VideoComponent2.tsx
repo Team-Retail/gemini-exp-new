@@ -1,8 +1,7 @@
-import vector from "../assets/magic-eraser/Vector.svg";
 import { useEffect, useRef, useState } from "react";
 import "../index.css";
-import arrow from "../assets/magic-eraser/arrow_forward.svg";
-import { useEnd } from "../context/endContext.tsx";
+
+import Disclaimer from "./Disclaimer.tsx";
 // @ts-ignore
 const VideoComponent2 = ({ src }) => {
   const [firstOverlay, setFirstOverlay] = useState(true);
@@ -13,8 +12,10 @@ const VideoComponent2 = ({ src }) => {
   const videoRef3 = useRef<HTMLVideoElement>(null);
   const [isVideoEnded, setIsVideoEnded] = useState(false);
   const [isVideoEnded2, setIsVideoEnded2] = useState(false);
+  const [disclaimerShown, setDisclaimerShown] = useState(false);
+
   const [isVideoEnded3, setIsVideoEnded3] = useState(false);
-  const { setIsEnd } = useEnd();
+
 
   useEffect(() => {
     const handleVideoEnd = () => {
@@ -83,14 +84,18 @@ const VideoComponent2 = ({ src }) => {
     };
   }, [thirdOverlay]);
 
+  const handleDisclaimer = () => {
+    setDisclaimerShown(!disclaimerShown);
+  }
+
   return (
     <>
+
       <div
-        className={`${
-          firstOverlay ? "opacity-100" : "opacity-0 hidden"
-        } unity-canvas h-full w-full relative`}
+        className={`${firstOverlay ? "opacity-100" : "opacity-0 hidden"
+          } unity-canvas h-full w-full relative`}
       >
-        <div className="w-full h-full  text-white  z-20">
+        <div className="w-full h-full  text-white  z-20 relative">
           <video
             muted
             autoPlay
@@ -100,6 +105,17 @@ const VideoComponent2 = ({ src }) => {
           >
             <source src={src[0]} type="video/mp4" />
           </video>
+          <div className="absolute bottom-0">
+            <div className={` w-72 h-5`} onClick={handleDisclaimer}>
+              {
+                disclaimerShown ? <div>
+                  <Disclaimer open={true} setOpen={function (): void {
+                    throw new Error("Function not implemented.");
+                  }} isGreater={false} />
+                </div> : <div></div>
+              }
+            </div>
+          </div>
         </div>
         {isVideoEnded && (
           <button
@@ -115,21 +131,30 @@ const VideoComponent2 = ({ src }) => {
         )}
       </div>
       <div
-        className={`${
-          secondOverlay ? "opacity-100" : "opacity-0 hidden"
-        } unity-canvas h-full w-full relative`}
+        className={`${secondOverlay ? "opacity-100" : "opacity-0 hidden"
+          } unity-canvas h-full w-full relative`}
       >
-        <div className="w-full h-full  text-white  z-20">
+        <div className="w-full h-full  text-white  z-20 relative">
           <video
             muted
             ref={videoRef2}
             controls={false}
-            className={` h-full  rounded-xl z-20 ${
-              isVideoEnded ? "opacity-100" : "opacity-0 hidden"
-            } ease-out duration-300 `}
+            className={` h-full  rounded-xl z-20 ${isVideoEnded ? "opacity-100" : "opacity-0 hidden"
+              } ease-out duration-300 `}
           >
             <source src={src[1]} type="video/mp4" />
           </video>
+          <div className="absolute bottom-0">
+            <div className={` w-72 h-5`} onClick={handleDisclaimer}>
+              {
+                disclaimerShown ? <div>
+                  <Disclaimer open={true} setOpen={function (): void {
+                    throw new Error("Function not implemented.");
+                  }} isGreater={false} />
+                </div> : <div></div>
+              }
+            </div>
+          </div>
           {isVideoEnded2 && (
             <div
               className="absolute bottom-[112px] right-[35px] z-20"
@@ -144,9 +169,8 @@ const VideoComponent2 = ({ src }) => {
         </div>
       </div>
       <div
-        className={`${
-          thirdOverlay ? "opacity-100" : "opacity-0 hidden"
-        } unity-canvas h-full w-full relative`}
+        className={`${thirdOverlay ? "opacity-100" : "opacity-0 hidden"
+          } unity-canvas h-full w-full relative`}
       >
         <div className="w-full h-full  text-white relative z-20">
           <video
@@ -157,6 +181,17 @@ const VideoComponent2 = ({ src }) => {
           >
             <source src={src[2]} type="video/mp4" />
           </video>
+          <div className="absolute bottom-0">
+            <div className={` w-72 h-5`} onClick={handleDisclaimer}>
+              {
+                disclaimerShown ? <div>
+                  <Disclaimer open={true} setOpen={function (): void {
+                    throw new Error("Function not implemented.");
+                  }} isGreater={false} />
+                </div> : <div></div>
+              }
+            </div>
+          </div>
         </div>
       </div>
     </>

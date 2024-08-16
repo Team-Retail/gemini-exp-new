@@ -1,9 +1,8 @@
 
 import cn from "../utils/cn";
-import close from "../assets/magic-eraser/navigationCTAs.svg"
-import arrow from "../assets/magic-eraser/arrow_forward.svg";
-import {useEnd} from "../context/endContext.tsx";
-import {useEffect, useState} from "react";
+import { useEnd } from "../context/endContext.tsx";
+import { useEffect, useState } from "react";
+import close from "../assets/close.svg";
 import TextTransition, { presets } from 'react-text-transition';
 interface DisclaimerProps {
     open: boolean;
@@ -14,7 +13,7 @@ interface DisclaimerProps {
 
 export default function Disclaimer({ open, setOpen, isGreater }: DisclaimerProps) {
     const [isTaskOne, setIsTaskOne] = useState(true);
-    const {isEnd} = useEnd();
+    const { isEnd } = useEnd();
     const TEXTS = ['Next Feature', 'Circle to Search'];
     const [index, setIndex] = useState(0);
     useEffect(() => {
@@ -55,7 +54,7 @@ export default function Disclaimer({ open, setOpen, isGreater }: DisclaimerProps
                 </div>
                 <div className="bg-[#0138F4]  rounded-full px-3 cursor-pointer py-2 text-white flex items-center">
                     <TextTransition springConfig={presets.wobbly} className="text-[0.7rem]">{TEXTS[index % TEXTS.length]}</TextTransition>
-                    <img src={arrow} alt="arrow" className="h-2 w-2 ml-[0.5vw] inline"/>
+                    {/* <img src={arrow} alt="arrow" className="h-2 w-2 ml-[0.5vw] inline" /> */}
                 </div>
 
             </div> : <></>}
@@ -77,19 +76,18 @@ export default function Disclaimer({ open, setOpen, isGreater }: DisclaimerProps
             {/*    <button className={"underline "} onClick={() => setOpen(prev => !prev)}>Disclaimer</button>*/}
             {/*</div>*/}
             <div onClick={() => setOpen(false)}
-                 className={`absolute bg-slate-500/30 inset-0 ${!open && "hidden"} `}></div>
+                className={`absolute bg-slate-500/30 inset-0 ${!open && "hidden"} `}></div>
             <div
                 className={`absolute z-10 left-0 bottom-0 w-full bg-[#2B2E30] p-4 text-white rounded-t-2xl  shadow-lg transition-transform duration-300 ${open ? 'translate-y-0' : 'translate-y-full'} ${isGreater && "p-10"}`}>
                 <div className="flex justify-between items-center">
                     <h2 className={cn("font-google-sans ", isGreater && "text-[3.5vw]")}>Disclaimer</h2>
                     <button onClick={() => setOpen(false)} className="text-black font-bold">
-                       <img src={close} alt="closeButton" className={cn("w-7 h-7 hover:text-slate-700 text-slate-900", isGreater && "scale-150")} />
+                        <img src={close} alt="closeButton" className={cn("size-2 hover:text-slate-700 text-slate-900", isGreater && "")} />
                     </button>
                 </div>
                 <div className={cn("mt-3 mb-2 text-xs text-white font-google-sans-regular", isGreater && "text-[2vw]")}>
-                    <sup className="text-white">1</sup>
-                    1 Gemini mobile app available on select devices, languages, and countries. Internet connection required. Check responses for accuracy.
-                    2 Results for illustrative purposes. Check responses for accuracy. Available in select countries and languages.
+                    <sup className="text-white"></sup>
+                    1. Gemini mobile app available on select devices, languages, and countries. Internet connection required. Check responses for accuracy. <br />2. Results for illustrative purposes. Check responses for accuracy. Available in select countries and languages.
                 </div>
             </div>
         </div>

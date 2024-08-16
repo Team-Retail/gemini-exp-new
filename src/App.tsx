@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import VideoComponent2 from "./components/VideoComponent2";
-import Disclaimer from "./components/Disclaimer";
+
 // import LoadingScreen from "./components/LoadingScreen";
 // import cn from "./utils/cn";
 import axios from "axios";
@@ -84,9 +84,8 @@ function App() {
           canvasRef.current.clientHeight * 0.5625 >
           containerRef.current.clientWidth
         ) {
-          canvasRef.current.style.height = `${
-            canvasRef.current.offsetWidth / 0.5625
-          }px`;
+          canvasRef.current.style.height = `${canvasRef.current.offsetWidth / 0.5625
+            }px`;
         } else {
           canvasRef.current.style.height = `${window.innerHeight * 0.8}px`;
           canvasRef.current.style.width = `${window.innerHeight * 0.45}px`;
@@ -166,16 +165,16 @@ function App() {
               ref={canvasRef}
             >
 
-              {/*{<LoadingScreen progress={progress * 100}/>}*/}
 
-              <div className="w-full font-google-sans-regular unity-canvas bg-black h-full justify-between flex flex-col items-center  transition-opacity ease-in-out duration-500">
+              {/*{<LoadingScreen progress={progress * 100}/>}*/}
+              <div className=" relative w-full font-google-sans-regular unity-canvas bg-black h-full justify-between flex flex-col items-center  transition-opacity ease-in-out duration-500">
                 <div className="unity-canvas w-full h-full z-10 absolute text-white top-0 bottom-0 ">
                   <VideoComponent2 src={loadedAssets} />
-               </div>
-            </div>
+                </div>
+              </div>
             </div>
           </div>
-        ) : ( 
+        ) : (
           <></>
         )}
       </div>
