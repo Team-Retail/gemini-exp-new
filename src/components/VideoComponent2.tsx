@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "../index.css";
 
 import Disclaimer from "./Disclaimer.tsx";
+import close from "../assets/close.svg";
 // @ts-ignore
 const VideoComponent2 = ({ src }) => {
   const [firstOverlay, setFirstOverlay] = useState(true);
@@ -13,6 +14,7 @@ const VideoComponent2 = ({ src }) => {
   const [isVideoEnded, setIsVideoEnded] = useState(false);
   const [isVideoEnded2, setIsVideoEnded2] = useState(false);
   const [disclaimerShown, setDisclaimerShown] = useState(false);
+  const [Open, setOpen] = useState(false);
 
   //const [isVideoEnded3, setIsVideoEnded3] = useState(false);
 
@@ -146,17 +148,6 @@ const VideoComponent2 = ({ src }) => {
           >
             <source src={src[1]} type="video/mp4" />
           </video>
-          <div className="absolute bottom-0">
-            <div className={` w-72 h-5`} onClick={handleDisclaimer}>
-              {
-                disclaimerShown ? <div>
-                  <Disclaimer open={true} setOpen={function (): void {
-                    throw new Error("Function not implemented.");
-                  }} isGreater={false} />
-                </div> : <div></div>
-              }
-            </div>
-          </div>
           {isVideoEnded2 && (
             <div
               className="absolute bottom-[112px] right-[35px] z-20"
@@ -171,27 +162,59 @@ const VideoComponent2 = ({ src }) => {
         </div>
       </div>
       <div
-        className={`${thirdOverlay ? "opacity-100" : "opacity-0 hidden"
-          } unity-canvas h-full w-full relative`}
+        className={`${thirdOverlay ? "opacity-100" : "opacity-0 hidden"} unity-canvas h-full w-full relative`}
       >
-        <div className="w-full h-full  text-white relative z-20">
+        <div className="w-full h-full text-blue-100 relative z-20">
           <video
             muted
             ref={videoRef3}
             controls={false}
-            className={` h-full  rounded-xl z-20 `}
+            className="h-full rounded-xl"
           >
             <source src={src[2]} type="video/mp4" />
           </video>
-          <div className="absolute bottom-0">
-            <div className={` w-72 h-5`} onClick={handleDisclaimer}>
-              {
-                disclaimerShown ? <div>
-                  <Disclaimer open={true} setOpen={function (): void {
-                    throw new Error("Function not implemented.");
-                  }} isGreater={false} />
-                </div> : <div></div>
-              }
+
+          <div className="absolute bottom-0 left-0 w-full">
+            {
+              true ? <div className="text-left absolute bottom-3 left-4 border-b w-[5vh] text-[#DADCE0] text-[1vh] z-20">
+                <button
+                  onClick={() => {
+                    setOpen(true);
+                  }}
+                  className=""
+
+                >
+                  Disclaimer
+                </button>
+              </div>
+                :
+                <></>
+            }
+
+            <div
+              className={`absolute space-y-[1vh]  flex-col w-full text-white  bg-[#2B2E30] rounded-t-3xl bottom-0 left-0 z-50 h-fit pb-4 flex transform transition-all duration-1000  ease-in-out ${Open ? "slide-up visible" : "hidden"
+                }`}
+            >
+              <div className="flex mb-[2px] px-[2vh] pt-[1vh] justify-between">
+                <p className=" font-google-sans-regular font-medium  text-[11px]  pt-[0.5vh]  pl-[0.5vh]">
+                  Disclaimer
+                </p>
+                <button
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                  className=" w-[2.4vh] h-[2.4vh] flex justify-center items-center rounded-full bg-[#3C4043]"
+                >
+                  <img
+                    src={close}
+                    alt=""
+                    className=" h-[0.6vh] w-[0.7vh]"
+                  />
+                </button>
+              </div>
+              <h1 className="pl-[2.5vh] font-extralight text-[9px]">
+                <sup className="text-white">1</sup>Gemini mobile app available on select devices, languages, and countries. Internet connection required. Check responses for accuracy. <br /><sup>2</sup>Results for illustrative purposes. Check responses for accuracy. Available in select countries and languages.
+              </h1>
             </div>
           </div>
         </div>
