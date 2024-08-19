@@ -1,9 +1,9 @@
-
 import cn from "../utils/cn";
 import { useEnd } from "../context/endContext.tsx";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import close from "../assets/close.svg";
 import TextTransition, { presets } from 'react-text-transition';
+
 interface DisclaimerProps {
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
